@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>윤혜란 이력서</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: A4 이력서 한 장. 왼쪽 140px 항목명 + 오른쪽 내용, 날짜는 오른쪽 끝 정렬, 얇은 구분선 */
+:root{
+  --desk:#eef0ee; --paper:#ffffff; --ink:#1e2420; --sub:#4d5650; --muted:#7d8580; --line:#e4e7e4; --accent:#2f6b45; --accent-soft:#eaf2ec;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --desk:#0f1311; --paper:#171c19; --ink:#e8ece9; --sub:#bcc4be; --muted:#8c958f; --line:#2a312d; --accent:#7cc496; --accent-soft:#1f2c24; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --desk:#0f1311; --paper:#171c19; --ink:#e8ece9; --sub:#bcc4be; --muted:#8c958f; --line:#2a312d; --accent:#7cc496; --accent-soft:#1f2c24; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--desk);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:break-word;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 56px}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.sheet{max-width:860px;margin:0 auto;background:var(--paper);border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.05),0 12px 40px rgba(20,40,30,.08);padding:56px 64px 64px}
+
+/* 머리 */
+.head{display:flex;align-items:center;gap:28px}
+.avatar{width:96px;height:96px;border-radius:50%;background:var(--accent-soft);flex:none;display:grid;place-items:center;color:var(--accent);font-size:12px;text-align:center;line-height:1.4}
+h1{font-size:44px;font-weight:900;margin:0;letter-spacing:.06em;line-height:1.1}
+.role{font-size:17px;font-weight:700;margin:8px 0 0;color:var(--sub)}
+.contact{display:flex;flex-wrap:wrap;gap:10px 28px;margin:28px 0 0;padding:0 0 24px;border-bottom:1.5px solid var(--ink);list-style:none;font-size:13px}
+.contact li{display:flex;align-items:center;gap:7px;color:var(--sub)}
+.contact svg{width:15px;height:15px;flex:none;color:var(--ink)}
+.contact a{text-decoration:none}
+.contact a:hover{color:var(--accent)}
+
+/* 섹션 */
+.sec{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;padding:28px 0;border-bottom:1px solid var(--line)}
+.sec:last-child{border-bottom:0;padding-bottom:0}
+.sec>h2{font-size:17px;font-weight:700;margin:0;line-height:1.5}
+.sec>div{min-width:0}
+.profile p{margin:0;color:var(--sub)}
+
+.item{position:relative;padding-left:18px}
+.item+.item{margin-top:18px;padding-top:18px;border-top:1px dashed var(--line)}
+.item::before{content:"";position:absolute;left:2px;top:.78em;width:5px;height:5px;border-radius:50%;background:var(--ink)}
+.item+.item::before{top:calc(18px + .78em)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.row h3{font-size:15px;font-weight:700;margin:0}
+.date{font-size:13px;color:var(--sub);font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:500}
+.desc{margin:2px 0 6px;color:var(--sub);font-size:13.5px}
+.item ul{margin:0;padding-left:18px;color:var(--sub);font-size:13.5px}
+.item ul li{margin:1px 0}
+.item ul li::marker{color:var(--muted)}
+.links{display:flex;gap:14px;margin-top:6px;font-size:12.5px}
+.links a{color:var(--accent);text-decoration:none;font-weight:500}
+.links a:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* 핵심 역량 */
+.skills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.skill{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px;text-align:center;font-size:13px;font-weight:500;color:var(--sub);border-right:1px solid var(--line)}
+.skill:nth-child(4n){border-right:0}
+.skill:nth-child(n+5){border-top:1px solid var(--line)}
+.skill svg{width:30px;height:30px;color:var(--ink)}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.stack span{font-size:12px;padding:2px 9px;border:1px solid var(--line);border-radius:4px;color:var(--sub)}
+
+
+.certs{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.certs li{display:flex;justify-content:space-between;gap:16px;padding-left:18px;position:relative;color:var(--sub)}
+.certs li::before{content:"";position:absolute;left:2px;top:.78em;width:5px;height:5px;border-radius:50%;background:var(--ink)}
+.certs b{color:var(--ink);font-weight:700}
+
+/* 왼쪽 메뉴 */
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px;max-width:1140px;margin:0 auto;align-items:start}
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);height:calc(100vh - 48px);min-height:520px;display:flex;flex-direction:column;padding:8px 4px}
+.brand{font-weight:900;font-size:17px;line-height:1.25;letter-spacing:.02em;text-decoration:none;color:var(--ink);margin-bottom:40px}
+.brand span{display:block;color:var(--accent)}
+.grp{font-size:11.5px;font-weight:700;letter-spacing:.14em;color:var(--muted);margin:0 0 10px 4px}
+.side ul{list-style:none;margin:0 0 32px;padding:0;display:grid;gap:2px}
+.side li a{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500;color:var(--sub);position:relative;transition:background .15s,color .15s}
+.side li a::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--muted);flex:none;opacity:.7}
+.side li a:hover{background:var(--paper);color:var(--ink)}
+.side li a.on{background:var(--accent-soft);color:var(--accent);font-weight:700}
+.side li a.on::before{background:var(--accent);opacity:1}
+.side li a.on::after{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:3px;background:var(--accent)}
+.side-foot{margin-top:auto;font-size:12.5px;font-weight:500;color:var(--sub);line-height:1.6}
+.side-foot a{text-decoration:none}
+.side-foot a:hover{color:var(--accent)}
+.sheet{margin:0;max-width:860px}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+.sec,.item,.head{scroll-margin-top:24px}
+@media (max-width:900px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:16px}
+  .side{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;height:auto;min-height:0;flex-direction:row;align-items:center;gap:14px;padding:10px 0;background:var(--desk);overflow-x:auto;scrollbar-width:none}
+  .brand{margin:0;font-size:14px;white-space:nowrap}
+  .side nav{display:flex;gap:4px}
+  .side .grp,.side-foot{display:none}
+  .side ul{display:flex;margin:0;gap:2px}
+  .side li a{white-space:nowrap;padding:6px 10px;font-size:13px}
+  .side li a::before{display:none}
+  .side li a.on::after{display:none}
+  .sheet{margin:0 auto}
+  .sec,.item,.head{scroll-margin-top:64px}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--desk)}
+}
+
+@media (max-width:640px){
+  body{padding-block:16px 32px}
+  .sheet{padding:32px 22px 40px}
+  .head{gap:18px}
+  .avatar{width:72px;height:72px;font-size:11px}
+  h1{font-size:34px}
+  .role{font-size:15px}
+  .sec{grid-template-columns:minmax(0,1fr);gap:12px;padding:24px 0}
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .skill:nth-child(4n){border-right:1px solid var(--line)}
+  .skill:nth-child(2n){border-right:0}
+  .skill:nth-child(n+3){border-top:1px solid var(--line)}
+  .row{flex-direction:column;gap:0}
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+<aside class="side" aria-label="포트폴리오 메뉴">
+  <a class="brand" href="#about">HYERAN.<span>PORTFOLIO</span></a>
+  <nav>
+    <p class="grp">PROJECTS</p>
+    <ul>
+      <li><a href="#genz">젠지 표류기</a></li>
+      <li><a href="#bookstore">BOOKSTORE</a></li>
+      <li><a href="#cjmarket">CJ THE MARKET</a></li>
+      <li><a href="#order">발주 자동화</a></li>
+      <li><a href="#etc">기타 프로젝트</a></li>
+    </ul>
+    <p class="grp">MORE</p>
+    <ul>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#career">경력</a></li>
+      <li><a href="#edu">학력 · 교육</a></li>
+      <li><a href="#skills">핵심 역량</a></li>
+      <li><a href="#certs">자격증</a></li>
+    </ul>
+  </nav>
+  <div class="side-foot">yhr9232@gmail.com<br><a href="https://github.com/hyeran712">github.com/hyeran712</a></div>
+</aside>
+<main class="sheet">
+  <header class="head" id="about">
+    <div class="avatar" aria-label="프로필 사진 자리">사진</div>
+    <div>
+      <h1>윤혜란</h1>
+      <p class="role">AI 서비스 · 백엔드 · 업무 자동화</p>
+    </div>
+  </header>
+  <ul class="contact">
+    <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5"/><path d="M2 4.5 8 9l6-4.5"/></svg>yhr9232@gmail.com</li>
+    <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .7a7.3 7.3 0 0 0-2.3 14.2c.4.1.5-.2.5-.4v-1.3c-2 .4-2.5-.9-2.5-.9-.3-.8-.8-1.1-.8-1.1-.7-.5 0-.5 0-.5.7.1 1.1.8 1.1.8.7 1.1 1.8.8 2.2.6.1-.5.3-.8.5-1-1.6-.2-3.3-.8-3.3-3.6 0-.8.3-1.5.8-2-.1-.2-.3-.9.1-1.9 0 0 .6-.2 2 .8a7 7 0 0 1 3.7 0c1.4-1 2-.8 2-.8.4 1 .2 1.7.1 1.9.5.5.8 1.2.8 2 0 2.8-1.7 3.4-3.3 3.6.3.2.5.7.5 1.4v2c0 .2.1.5.5.4A7.3 7.3 0 0 0 8 .7z"/></svg><a href="https://github.com/hyeran712">github.com/hyeran712</a></li>
+  </ul>
+
+  <section class="sec profile">
+    <h2>프로필</h2>
+    <div><p>카페 점장으로 매장을 운영하며 현장의 반복 업무와 불편을 직접 겪었습니다.<br>그 경험을 바탕으로 데이터베이스와 API를 설계하고, 반복 업무는 n8n으로 자동화합니다.<br>쓰는 사람이 무엇을 불편해하는지 먼저 묻고, 그 답을 작동하는 서비스로 만듭니다.</p></div>
+  </section>
+
+  <section class="sec" id="career">
+    <h2>주요 경력</h2>
+    <div>
+      <div class="item">
+        <div class="row"><h3>타이거슈가코리아 · 본사직영점 점장</h3><span class="date">2020.05 – 2021.12</span></div>
+        <p class="desc">카페·레스토랑 매니저</p>
+        <ul><li>매장관리</li><li>인원관리</li><li>매출관리</li></ul>
+      </div>
+      <div class="item">
+        <div class="row"><h3>카페 현장 경력</h3><span class="date">총 5년 5개월</span></div>
+        <p class="desc">아르바이트 포함</p>
+        <ul><li>쥬씨 가맹점 1년 4개월</li><li>개인카페 2년 5개월</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="projects">
+    <h2>프로젝트</h2>
+    <div>
+      <div class="item" id="genz">
+        <div class="row"><h3>젠지 표류기 · 팀 프로젝트(4명)</h3><span class="date">2026</span></div>
+        <p class="desc">동아일보 기사로 만든 신입사원 회사생활 가이드 · 부조장, 백엔드·데이터 담당</p>
+        <ul><li>Supabase 데이터베이스 설계, 서버 API, 권한(RLS) 설정</li><li>SOS 상담 API와 학습 기록 기능 개발</li><li>퀴즈·캘린더·체크리스트 화면을 AI 프롬프트로 디자인</li></ul>
+        <div class="links"><a href="https://github.com/hyeran712/genz-project">GitHub ↗</a></div>
+      </div>
+      <div class="item" id="bookstore">
+        <div class="row"><h3>BOOKSTORE · 도서 API 연동 온라인 서점</h3><span class="date">2026.08</span></div>
+        <p class="desc">개인 프로젝트 · JavaScript, Fetch API, Kakao 도서 검색 API</p>
+        <ul><li>async/await와 Promise.all로 도서 데이터 병렬 요청</li><li>URL 매개변수로 도서 제목을 넘겨 상세페이지에서 재조회</li><li>정가·판매가로 할인율 계산, 신간 선별 필터</li></ul>
+        <div class="links"><a href="https://hyeran712.github.io/bookstore/">사이트 ↗</a><a href="https://github.com/hyeran712/bookstore">GitHub ↗</a></div>
+      </div>
+      <div class="item" id="cjmarket">
+        <div class="row"><h3>CJ THE MARKET 클론 · 반응형 쇼핑몰</h3><span class="date">2026.08</span></div>
+        <p class="desc">개인 프로젝트 · HTML, CSS, JavaScript, JSON</p>
+        <ul><li>JSON 5개 파일, 상품 33개를 fetch로 불러와 렌더링</li><li>배너 자동 슬라이드, 상세페이지 수량·금액 계산</li><li>768px 이하 모바일 레이아웃 재구성</li></ul>
+        <div class="links"><a href="https://hyeran712.github.io/html_0827/">사이트 ↗</a><a href="https://github.com/hyeran712/html_0827">GitHub ↗</a></div>
+      </div>
+      <div class="item" id="order">
+        <div class="row"><h3>발주 자동화 시스템</h3><span class="date">2026</span></div>
+        <p class="desc">개인 프로젝트 · n8n, Google Sheets, 카카오 알림톡</p>
+        <ul><li>시트에 발주 내용을 입력하면 거래처에 알림톡 자동 발송</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="etc">
+    <h2>기타 프로젝트</h2>
+    <div>
+      <div class="item">
+        <div class="row"><h3>카페 메뉴 레시피 원가표</h3><span class="date">2026</span></div>
+        <p class="desc">재료 단가와 레시피 용량만 바꾸면 메뉴 6종의 원가·마진이 INDEX/MATCH로 자동 계산되는 시트</p>
+      </div>
+      <div class="item">
+        <div class="row"><h3>한국식 로바다야끼 창업 기획안</h3><span class="date">2026</span></div>
+        <p class="desc">'퇴근길 파닭 스탠딩 바'와 '네온 시티 야타이'를 섞은 콘셉트. 1층 생맥주 스탠딩 바, 2층 꼬치 다이닝</p>
+      </div>
+      <div class="item">
+        <div class="row"><h3>MCP로 Claude 연결하기</h3><span class="date">2026</span></div>
+        <p class="desc">Claude Desktop에 Google Drive·Notion을 MCP로 연결해 문서 자동 업로드</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="edu">
+    <h2>학력 · 교육</h2>
+    <div>
+      <div class="item">
+        <div class="row"><h3>생성형 AI 마스터 클래스(KDT) 수료</h3><span class="date">2026.07 – 2026.11</span></div>
+        <p class="desc">동아일보 그룹</p>
+      </div>
+      <div class="item">
+        <div class="row"><h3>영동대학교 와인발효식음료서비스학과</h3><span class="date">2013.03 – 2017.02</span></div>
+        <p class="desc">졸업</p>
+      </div>
+      <div class="item">
+        <div class="row"><h3>노원고등학교</h3><span class="date">2013</span></div>
+        <p class="desc">졸업</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="skills">
+    <h2>핵심 역량</h2>
+    <div>
+      <div class="skills">
+        <div class="skill"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="16" cy="8" rx="9" ry="3.5"/><path d="M7 8v8c0 1.9 4 3.5 9 3.5s9-1.6 9-3.5V8M7 16v8c0 1.9 4 3.5 9 3.5s9-1.6 9-3.5v-8"/></svg>백엔드 · DB</div>
+        <div class="skill"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 10 4 16l7 6M21 10l7 6-7 6M18 7l-4 18"/></svg>API 연동</div>
+        <div class="skill"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="16" r="3"/><circle cx="25" cy="8" r="3"/><circle cx="25" cy="24" r="3"/><path d="M10 15l12-6M10 17l12 6"/></svg>업무 자동화</div>
+        <div class="skill"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="26" height="18" rx="2"/><path d="M3 11h26M11 28h10M16 24v4"/></svg>웹 퍼블리싱</div>
+        <div class="skill"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 4l2.6 7.4L26 14l-7.4 2.6L16 24l-2.6-7.4L6 14l7.4-2.6z"/><path d="M25 22l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/></svg>AI 활용</div>
+        <div class="skill"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="24" height="22" rx="2"/><path d="M4 12h24M4 19h24M12 5v22"/></svg>데이터 정리</div>
+        <div class="skill"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 12h16v8a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6z"/><path d="M23 14h2a3 3 0 0 1 0 6h-2M11 4c-1 1.5 1 2.5 0 4M15 4c-1 1.5 1 2.5 0 4M19 4c-1 1.5 1 2.5 0 4"/></svg>매장 운영</div>
+        <div class="skill"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="4"/><circle cx="22" cy="12" r="3"/><path d="M3 26c.8-4.6 4-7 8-7s7.2 2.4 8 7M19 19.5c.9-.3 1.9-.5 3-.5 3.2 0 5.6 2 6.3 5.5"/></svg>팀 협업</div>
+      </div>
+      <div class="stack" aria-label="사용 기술">
+        <span>Supabase</span><span>PostgreSQL RLS</span><span>REST API</span><span>Python</span><span>HTML · CSS · JavaScript</span><span>Fetch API</span><span>JSON</span><span>n8n</span><span>카카오 알림톡 API</span><span>Excel · Google Sheets</span><span>Claude · MCP</span><span>Git · GitHub</span><span>Notion</span><span>Slack</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="certs">
+    <h2>자격증</h2>
+    <div>
+      <ul class="certs">
+        <li><span><b>조주기능사</b> · 한국산업인력공단</span><span class="date">2016.11</span></li>
+        <li><span><b>2종보통운전면허</b> · 경찰청</span><span class="date">2016.03</span></li>
+        <li><span><b>바리스타 2급</b> · (사)한국커피협회</span><span class="date">2015.12</span></li>
+        <li><span><b>와인소믈리에</b> · 한국국제소믈리에협회</span><span class="date">2014.08</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+</div>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.side li a'));
+  var map={}; links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var targets=Object.keys(map).map(function(id){return document.getElementById(id);}).filter(Boolean).sort(function(a,b){return a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1;});
+  function update(){
+    var y=window.scrollY+120, cur=targets[0];
+    targets.forEach(function(t){ if(t.getBoundingClientRect().top+window.scrollY<=y) cur=t; });
+    if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4) cur=targets[targets.length-1];
+    links.forEach(function(a){a.classList.toggle('on',a===map[cur.id]);});
+    var on=map[cur.id]; if(on&&window.innerWidth<=900){ var bar=on.closest('.side'); var l=on.offsetLeft-bar.clientWidth/3; bar.scrollTo({left:l,behavior:'auto'}); }
+  }
+  window.addEventListener('scroll',update,{passive:true}); window.addEventListener('resize',update); update();
+})();
+</script>
+</body>
+</html>
