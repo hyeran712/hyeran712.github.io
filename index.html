@@ -274,6 +274,7 @@ body{font-size:14px}
 .lb.tall{width:min(1000px,94vw)}
 .lb.tall.m{width:min(420px,94vw)}
 .lb.tall img,.lb.tall.m img{width:100%}
+@media (min-width:1101px) and (max-width:1340px){.proj{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}.roles li{font-size:13px;letter-spacing:-.01em}}
 
 /* ── 작동 구조 ── */
 .system{margin-top:56px;border-top:1.5px solid var(--ink);padding-top:12px}
@@ -373,7 +374,7 @@ body{font-size:14px}
           <p class="techs">n8n · Google Sheets · Instagram Reels 데이터 · LLM 프롬프트</p>
           <p class="pdesc">편의점 신상 간식·디저트의 인스타그램 릴스 반응을 자동으로 모아 Google Sheets에 쌓고, 생성형 AI로 '왜 뜨는지'와 후속 콘텐츠 기획안을 뽑아 주는 F&amp;B 트렌드 레이더입니다.</p>
           <div class="mets"><div><b>53.56</b><span>1위 릴스 Trend Score</span></div><div><b>18.7h</b><span>1위 게시 후 경과 시간</span></div><div><b>3단계</b><span>수집 · 분석 · 제안 자동화</span></div></div>
-          <p class="rl">주요 구현</p><ul class="roles"><li>누적 조회수가 아닌 게시 후 경과시간 대비 좋아요·댓글 속도로 Trend Score 설계</li><li>LLM 프롬프트로 리뷰 본문에서 인기 요인과 식감 키워드 추출</li><li>제품 클로즈업, 리액션 영상 등 후속 콘텐츠 아이디어를 시트에 자동 기록</li></ul>
+          <p class="rl">주요 구현</p><ul class="roles"><li>게시 후 경과시간 대비 좋아요·댓글 속도로 Trend Score 설계</li><li>LLM 프롬프트로 리뷰 본문에서 인기 요인과 식감 키워드 추출</li><li>클로즈업 · 리액션 등 후속 콘텐츠 아이디어를 시트에 자동 기록</li></ul>
           <div class="btns"><a class="b1" href="https://docs.google.com/spreadsheets/d/1t-StlNez5wx5bXTZ3hBg-qRW_m6QieOuB3_fm3hvbaI/edit?gid=0#gid=0" target="_blank" rel="noopener">실제 데이터 보기 →</a></div>
         </div>
         <div class="shot" data-shot>
@@ -397,7 +398,7 @@ body{font-size:14px}
           <p class="techs">Google Sheets · Apps Script · Gemini API</p>
           <p class="pdesc">복사한 공개 리뷰를 붙여 넣으면 AI가 칭찬 · 불만을 11개 항목으로 나누고, 근거 있는 메뉴 개선안을 뽑아 주는 리뷰 분석 도구입니다.</p>
           <div class="mets"><div><b>31건</b><span>공개 리뷰 분석</span></div><div><b>97%</b><span>긍정 반응</span></div><div><b>11개</b><span>분류 항목</span></div></div>
-          <p class="rl">주요 구현</p><ul class="roles"><li>흩어지던 AI 키워드를 11개 고정 항목으로 묶어 코드가 리뷰 수 집계</li><li>개선안마다 근거 리뷰 수를 붙여 AI가 지어낸 문제를 걸러 냄</li><li>분석 결과를 신메뉴 기획의 키워드 · 조건으로 연결</li></ul>
+          <p class="rl">주요 구현</p><ul class="roles"><li>AI 키워드를 11개 고정 항목으로 묶어 코드가 리뷰 수 집계</li><li>개선안마다 근거 리뷰 수를 붙여 AI가 지어낸 문제를 걸러 냄</li><li>분석 결과를 신메뉴 기획의 키워드 · 조건으로 연결</li></ul>
           <div class="btns"><a class="b1" href="https://docs.google.com/spreadsheets/d/1Kp8tfIGD_v-osJCynuq72cYaO_PROEipl7QBWk15lE0/edit?usp=sharing" target="_blank" rel="noopener">시트 보기 →</a></div>
         </div>
         <div class="shot" data-shot>
@@ -428,7 +429,7 @@ body{font-size:14px}
           <p class="techs">Google Sheets · Apps Script · Gemini API · INDEX/MATCH</p>
           <p class="pdesc">트렌드 키워드와 판매가를 넣으면 AI가 신메뉴 레시피를 제안하고, 시트가 실제 재료 단가로 원가율을 계산해 목표를 넘으면 다시 조정하는 기획 도구입니다.</p>
           <div class="mets"><div><b>42 → 27%</b><span>3차 재조정 원가율</span></div><div><b>9건</b><span>기획 실행 기록</span></div><div><b>30%</b><span>목표 원가율 판정</span></div></div>
-          <p class="rl">주요 구현</p><ul class="roles"><li>레시피 × 재료 단가로 원가율 계산, 초과 시 AI 재조정(최대 3차)</li><li>AI 계산과 실제 원가율이 달라 최종 판정은 시트 수식이 하도록 설계</li><li>'원두 반드시 포함' 조건으로 품질 유지 → 판매가 5,500원 필요 결론</li></ul>
+          <p class="rl">주요 구현</p><ul class="roles"><li>레시피 × 재료 단가로 원가율 계산, 초과 시 AI 재조정(최대 3차)</li><li>AI 계산 오차를 막으려 최종 판정은 시트 수식이 담당</li><li>'원두 필수' 조건으로 품질 유지 → 판매가 5,500원 결론</li></ul>
           <div class="btns"><a class="b1" href="https://docs.google.com/spreadsheets/d/1-nWHbYNogPfIrv1RaEt9rKk9TSD0YUlFJSo-CqRjPkY/edit?usp=sharing" target="_blank" rel="noopener">시트 보기 →</a></div>
         </div>
         <div class="shot" data-shot>
@@ -483,7 +484,7 @@ body{font-size:14px}
           <p class="techs">Next.js · React · TypeScript · Supabase · PostgreSQL RLS · OpenAI · Gemini</p>
           <p class="pdesc">신입사원이 가상 사무실의 물건을 눌러 카드뉴스 · 퀴즈 · 체크리스트 · AI 팀장으로 회사생활을 익히는 웹서비스입니다. 회사 사내 CS 창구를 대신해 신입사원의 질문을 받아 줍니다.</p>
           <div class="mets"><div><b>19개</b><span>DB 테이블</span></div><div><b>7개</b><span>콘텐츠 주제</span></div><div><b>4명</b><span>팀 · 부조장</span></div></div>
-          <p class="rl">맡은 역할</p><ul class="roles"><li>부조장으로 참여</li><li>퀴즈 · 체크리스트 · 캘린더 화면 UI 디자인</li><li>Supabase 연결 — 문항 · 체크리스트 데이터를 API로 불러와 화면 구동, 학습 기록 저장</li><li>근거 PDF 파일을 Storage에 올려 체크리스트 · 캘린더에 연결</li><li>권한(RLS)으로 사용자 기록은 본인만 접근하도록 설계</li></ul>
+          <p class="rl">맡은 역할</p><ul class="roles"><li>부조장으로 참여</li><li>퀴즈 · 체크리스트 · 캘린더 화면 UI 디자인</li><li>Supabase로 퀴즈 · 체크리스트 데이터 연동, 학습 기록 저장</li><li>근거 PDF 파일을 Storage에 올려 체크리스트 · 캘린더에 연결</li><li>권한(RLS)으로 사용자 기록은 본인만 접근하도록 설계</li></ul>
           <div class="btns"><a class="b1" href="https://github.com/hyeran712/genz-pyoryugi-portfolio" target="_blank" rel="noopener">내 담당 파트 보기 →</a><a class="b2" href="https://github.com/hyeran712/genz-project" target="_blank" rel="noopener">팀 GitHub</a><a class="b2" href="https://genz-project-one.vercel.app" target="_blank" rel="noopener">사이트 이동하기</a></div>
         </div>
         <div class="shot" data-shot>
