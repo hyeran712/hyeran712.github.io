@@ -607,12 +607,9 @@ document.querySelectorAll('a[href^="#deck-"]').forEach(function(a){
   lb.addEventListener('click',function(e){if(e.target!==im)lb.close();});
   document.querySelectorAll('.screen').forEach(function(sc){
     if(!sc.querySelector('.pane img'))return;
-    var b=document.createElement('button');b.type='button';b.className='zoom';b.textContent='⤢ 크게 보기';sc.appendChild(b);
     function cur(){var ps=sc.querySelectorAll('.pane');for(var i=0;i<ps.length;i++){if(!ps[i].hidden)return ps[i].querySelector('img');}return null;}
     function show(){var i=cur();if(i)open(i.currentSrc||i.src,i.alt);}
-    b.addEventListener('click',show);
     sc.addEventListener('click',function(e){if(e.target.tagName==='IMG')show();});
-    var upd=function(){b.hidden=!cur();};upd();new MutationObserver(upd).observe(sc,{subtree:true,attributes:true,attributeFilter:['hidden']});
   });
   document.querySelectorAll('.arch-img img').forEach(function(i){i.style.cursor='zoom-in';i.addEventListener('click',function(){open(i.currentSrc||i.src,i.alt);});});
 })();
