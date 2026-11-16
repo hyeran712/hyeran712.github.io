@@ -1,5 +1,6 @@
 /** UI-facing state. Per-frame telemetry is read straight from `game` instead. */
 import { create } from 'zustand'
+import { IS_TOUCH_DEVICE } from './device'
 import type { QualityName } from './quality'
 
 export type Phase = 'loading' | 'menu' | 'countdown' | 'racing' | 'paused'
@@ -11,7 +12,8 @@ interface Settings { quality: QualityName; volume: number; adaptive: boolean }
 const SETTINGS_KEY = 'apex-gp:settings:v1'
 
 function loadSettings(): Settings {
-  const def: Settings = { quality: 'high', volume: 0.8, adaptive: true }
+  // phones start on the lightest preset; it can be raised in the menu
+  const def: Settings = { quality: IS_TOUCH_DEVICE ? 'low' : 'high', volume: 0.8, adaptive: true }
   try {
     const raw = localStorage.getItem(SETTINGS_KEY)
     if (raw) return { ...def, ...JSON.parse(raw) }
@@ -30,6 +32,8 @@ interface Store extends Settings {
   loadProgress: number
   loadLabel: string
   placeholderCar: boolean
+  /** show on-screen touch controls (touch device, or a touch was seen) */
+  touch: boolean
   /** current adaptive resolution scale 0..1 within the preset's DPR range */
   resScale: number
   set: (p: Partial<Store>) => void
@@ -48,6 +52,7 @@ export const useStore = create<Store>((set, get) => ({
   loadProgress: 0,
   loadLabel: 'Starting',
   placeholderCar: true,
+  touch: IS_TOUCH_DEVICE,
   resScale: 1,
   set: p => set(p),
   setSetting: p => {

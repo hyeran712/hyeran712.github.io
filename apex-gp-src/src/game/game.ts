@@ -35,11 +35,8 @@ class Game {
       this.sim = new VehicleSim()
       this.timer.reset(this.sim.state.loc.s)
       this.syncPose(1)
-      this.keys.onCamera = () => {
-        const st = useStore.getState()
-        if (st.phase === 'racing' || st.phase === 'countdown') st.set({ camera: (st.camera + 1) % 3 })
-      }
-      this.keys.onReset = () => { if (useStore.getState().phase === 'racing') this.resetCar() }
+      this.keys.onCamera = () => this.cycleCamera()
+      this.keys.onReset = () => this.resetCar()
       this.keys.onPause = () => this.togglePause()
       this.keys.attach()
       document.addEventListener('visibilitychange', () => {
@@ -67,7 +64,13 @@ class Game {
     st.set({ phase: 'countdown', lights: 0, toast: null })
   }
 
+  cycleCamera() {
+    const st = useStore.getState()
+    if (st.phase === 'racing' || st.phase === 'countdown') st.set({ camera: (st.camera + 1) % 3 })
+  }
+
   resetCar() {
+    if (useStore.getState().phase !== 'racing') return
     this.sim.resetToTrack()
     this.timer.invalidate('CAR RESET')
     this.syncPose(1)
@@ -76,6 +79,7 @@ class Game {
   togglePause() {
     const st = useStore.getState()
     if (st.phase === 'racing' || st.phase === 'countdown') {
+      this.keys.clear()
       st.set({ phase: 'paused', resumePhase: st.phase })
       this.audio.suspend()
     } else if (st.phase === 'paused') {

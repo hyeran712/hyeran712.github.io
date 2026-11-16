@@ -10,7 +10,8 @@ import { game } from './game'
 import { Effects } from './gfx/Effects'
 import { loadEnvironment, type EnvAsset } from './gfx/environment'
 import { makeBlob, makeClouds } from './gfx/textures'
-import { QUALITY, type QualitySettings } from './quality'
+import { IS_TOUCH_DEVICE } from './device'
+import { resolveQuality, type QualitySettings } from './quality'
 import { useStore } from './store'
 import { buildTrackScene, type TrackScene } from './track/trackScene'
 import { loadCarVisual } from './vehicle/carLoader'
@@ -206,12 +207,12 @@ export function Scene() {
   const quality = useStore(s => s.quality)
   const adaptive = useStore(s => s.adaptive)
   const resScale = useStore(s => s.resScale)
-  const q = QUALITY[quality]
+  const q = useMemo(() => resolveQuality(quality, IS_TOUCH_DEVICE), [quality])
   const [assets, setAssets] = useState<Assets | null>(null)
 
   useEffect(() => {
     let alive = true
-    loadAssets(QUALITY[useStore.getState().quality]).then(a => { if (alive) setAssets(a) })
+    loadAssets(resolveQuality(useStore.getState().quality, IS_TOUCH_DEVICE)).then(a => { if (alive) setAssets(a) })
       .catch(err => {
         console.error(err)
         useStore.getState().set({ loadLabel: 'Failed to load: ' + (err?.message ?? err) })
