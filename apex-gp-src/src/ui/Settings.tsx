@@ -1,5 +1,6 @@
 import { game } from '../game/game'
-import { QUALITY, QUALITY_ORDER } from '../game/quality'
+import { IS_TOUCH_DEVICE } from '../game/device'
+import { QUALITY, QUALITY_ORDER, resolveQuality } from '../game/quality'
 import { useStore } from '../game/store'
 
 /** Graphics preset, adaptive resolution and volume. Shared by both menus. */
@@ -8,7 +9,7 @@ export function Settings() {
   const adaptive = useStore(s => s.adaptive)
   const volume = useStore(s => s.volume)
   const setSetting = useStore(s => s.setSetting)
-  const q = QUALITY[quality]
+  const q = resolveQuality(quality, IS_TOUCH_DEVICE)
   return (
     <div className="settings">
       <div className="field">
@@ -38,7 +39,11 @@ export function Settings() {
 }
 
 export function Controls() {
-  const rows: [string, string][] = [
+  const touch = useStore(s => s.touch)
+  const rows: [string, string][] = touch ? [
+    ['Left pad', 'Slide left / right to steer'], ['Right pedals', 'Brake (left) · accelerator (right)'],
+    ['Brake held', 'Reverses once stopped'], ['Top buttons', 'Pause · camera · reset to track'],
+  ] : [
     ['W / ↑', 'Accelerate'], ['S / ↓', 'Brake · reverse when stopped'], ['A D / ← →', 'Steer'],
     ['Space', 'Hard braking'], ['C', 'Change camera'], ['R', 'Reset to track'], ['Esc', 'Pause'],
   ]

@@ -21,6 +21,25 @@ Audio API. No installation is needed to play the built version.
 | R | Reset the car onto the track (invalidates the current lap) |
 | Esc | Pause / resume |
 
+### Phones and tablets (touch)
+
+On a touch device the game shows on-screen controls and plays in landscape:
+
+| Control | Action |
+| --- | --- |
+| Left pad | Slide left / right to steer (analogue) |
+| Right pedals | Brake (left) and accelerator (right); holding brake when stopped reverses |
+| Top buttons | Pause, change camera, reset to track |
+
+Every control tracks its own finger, so steering, accelerator and brake can be
+held together. Holding the phone upright pauses the game and asks you to
+rotate. The layout scales to the screen and respects notch safe areas.
+Phones start on the Low preset, and every preset uses tighter budgets on
+touch devices (lower resolution ceiling, smaller shadow maps, sparser
+scenery); raise it from the menu if your phone copes. On iPhone the ring/silent
+switch also mutes game audio, and Safari cannot hide its toolbar from a web
+page, so use "Add to Home Screen" for a full-screen view.
+
 ## Run locally
 
 Requires Node 18+.
@@ -127,7 +146,10 @@ and HUD telemetry is written straight to the DOM without React re-renders.
 - Frame rate on real GPUs was not measured: development and testing ran in a
   headless browser with software rendering, which verifies correctness but
   says nothing about speed. If it is slow on your machine, drop a preset.
-- Keyboard only (no gamepad or wheel support).
+- Keyboard and touch only (no gamepad or wheel support).
+- Touch support was tested with emulated phone viewports and multi-touch
+  events in Chromium. It has not been run on a physical iPhone or Android
+  device, and not in Safari's engine.
 
 ## Project layout
 
@@ -153,5 +175,5 @@ apex-gp-src/
    │  ├─ camera/CameraRig.tsx
    │  ├─ audio/AudioEngine.ts
    │  └─ gfx/                textures.ts, environment.ts, Effects.tsx, SpeedBlurEffect.ts
-   └─ ui/                    HUD, menus, loading screen, styles
+   └─ ui/                    HUD, touch controls, menus, loading screen, styles
 ```
